@@ -1,0 +1,13 @@
+/* Tailwind core */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Demos */
+@import "demos/demo1";
+
+/* Shadcn UI */
+@import "shadcn.ui";
+
+/* Layout overrides were removed: the sidebar is fixed on the left (280px, 80px collapsed)
+   and the header/content are offset by --tw-sidebar-width from styles/demos/demo1.css */

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cvs-inventory-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cvs-inventory-frontend
+    ports:
+      - "9301:80"
+    restart: always
+    environment:
+      - NODE_ENV=production
