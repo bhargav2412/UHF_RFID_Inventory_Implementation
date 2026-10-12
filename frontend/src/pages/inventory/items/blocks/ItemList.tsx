@@ -9,7 +9,10 @@ interface Item {
   _id: string;
   item_id: string;
   item_name: string;
-  epc_prefix: string;
+  epc_prefix?: string | null;
+  uhf_range_start?: number | null;
+  uhf_range_end?: number | null;
+  current_stock?: number;
 }
 
 interface ItemListProps {
@@ -90,7 +93,8 @@ const ItemList = ({ refreshTrigger, search }: ItemListProps) => {
               <tr>
                 <th className="min-w-[150px] px-3">Item ID (SKU)</th>
                 <th className="min-w-[200px] px-3">Name</th>
-                <th className="min-w-[150px] px-3">EPC Prefix</th>
+                <th className="min-w-[170px] px-3">Tag Matching</th>
+                <th className="min-w-[100px] px-3 text-end">In Stock</th>
                 <th className="w-[100px] px-3 text-end">Actions</th>
               </tr>
             </thead>
@@ -105,9 +109,24 @@ const ItemList = ({ refreshTrigger, search }: ItemListProps) => {
                     <td className="px-3" title={item.item_name}>
                       {item.item_name}
                     </td>
-                    <td className="px-3 font-mono text-sm" title={item.epc_prefix}>
-                      {item.epc_prefix || '-'}
+                    <td className="px-3">
+                      {item.epc_prefix ? (
+                        <span className="flex flex-col">
+                          <span className="font-mono text-sm text-gray-900">{item.epc_prefix}…</span>
+                          <span className="text-xs text-gray-500">EPC prefix</span>
+                        </span>
+                      ) : item.uhf_range_start != null && item.uhf_range_end != null ? (
+                        <span className="flex flex-col">
+                          <span className="font-mono text-sm text-gray-900">
+                            {item.uhf_range_start} – {item.uhf_range_end}
+                          </span>
+                          <span className="text-xs text-gray-500">Tag number range</span>
+                        </span>
+                      ) : (
+                        <span className="text-gray-400">Not set</span>
+                      )}
                     </td>
+                    <td className="px-3 text-end font-semibold text-gray-900">{item.current_stock ?? 0}</td>
                     <td className="px-3 text-end">
                       <div className="flex justify-end gap-2">
                         <button
@@ -134,7 +153,7 @@ const ItemList = ({ refreshTrigger, search }: ItemListProps) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={4} className="text-center py-10 text-gray-500">
+                  <td colSpan={5} className="text-center py-10 text-gray-500">
                     No items found.
                   </td>
                 </tr>

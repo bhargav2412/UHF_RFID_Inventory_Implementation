@@ -9,3 +9,4 @@ export * from './FormDrawer';
 export * from './SegmentTabs';
 export * from './format';
 export * from './domain';
+export * from './BrandLogo';

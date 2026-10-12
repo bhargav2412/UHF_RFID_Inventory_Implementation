@@ -1,18 +1,12 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { KeenIcon } from '@/components/keenicons';
+import { BRAND, BrandLogo } from '@/components/app/BrandLogo';
 import { SidebarToggle } from './';
 
 /** Product mark shown in the sidebar and the mobile header. */
-const BrandMark = ({ size = 'md' }: { size?: 'sm' | 'md' }) => (
-  <span
-    className={`flex shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm ${
-      size === 'sm' ? 'size-8' : 'size-9'
-    }`}
-  >
-    <KeenIcon icon="scan-barcode" style="solid" className={size === 'sm' ? 'text-base' : 'text-lg'} />
-  </span>
+const BrandMark = ({ size = 'md', tile = true }: { size?: 'sm' | 'md'; tile?: boolean }) => (
+  <BrandLogo size={size === 'sm' ? 32 : 38} tile={tile} />
 );
 
 interface CompanyInfo {
@@ -46,11 +40,15 @@ const SidebarHeader = forwardRef<HTMLDivElement>((_props, ref) => {
         <span className="default-logo flex items-center gap-2.5 min-w-0">
           <BrandMark />
           <span className="flex flex-col min-w-0 leading-tight">
-            <span className="text-sm font-semibold text-gray-900 truncate">
-              {company?.name ?? 'CVS RFID'}
-            </span>
+            {company?.name ? (
+              <span className="text-sm font-semibold text-gray-900 truncate">{company.name}</span>
+            ) : (
+              <span className="text-sm font-bold tracking-wide text-gray-900 truncate">
+                CORE<span className="text-primary">VISTA</span>
+              </span>
+            )}
             <span className="text-2xs font-medium uppercase tracking-wider text-gray-500 truncate">
-              {company?.city ?? 'Inventory Suite'}
+              {company?.city ?? BRAND.product}
             </span>
           </span>
         </span>

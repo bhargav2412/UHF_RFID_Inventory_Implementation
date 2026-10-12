@@ -72,9 +72,11 @@ export const Sidebar = () => {
           <div className="flex items-center gap-2.5 px-5 pt-5">
             <BrandMark size="sm" />
             <div className="flex flex-col leading-tight">
-              <span className="text-sm font-semibold text-gray-900">CVS RFID</span>
+              <span className="text-sm font-bold tracking-wide text-gray-900">
+                CORE<span className="text-primary">VISTA</span>
+              </span>
               <span className="text-2xs font-medium uppercase tracking-wider text-gray-500">
-                Inventory Suite
+                RFID Inventory
               </span>
             </div>
           </div>

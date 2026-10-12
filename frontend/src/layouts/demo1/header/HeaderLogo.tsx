@@ -18,8 +18,10 @@ const HeaderLogo = () => {
         <KeenIcon icon="burger-menu-2" className="text-xl" />
       </button>
       <Link to="/" className="flex items-center gap-2">
-        <BrandMark size="sm" />
-        <span className="hidden sm:block text-sm font-semibold text-gray-900">CVS RFID</span>
+        <BrandMark size="sm" tile={false} />
+        <span className="hidden sm:block text-sm font-bold tracking-wide text-gray-900">
+          CORE<span className="text-primary">VISTA</span>
+        </span>
       </Link>
     </div>
   );

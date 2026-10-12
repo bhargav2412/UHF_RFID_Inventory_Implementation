@@ -30,9 +30,9 @@ const Layout = () => {
           <div className="flex flex-col p-8 lg:p-16 gap-4">
             <Link to="/">
               <img
-                src={toAbsoluteUrl('/media/app/mini-logo.svg')}
-                className="h-[28px] max-w-none"
-                alt=""
+                src={toAbsoluteUrl('/media/app/corevista-logo.png')}
+                className="h-[56px] max-w-none"
+                alt="CoreVista Systems"
               />
             </Link>
 

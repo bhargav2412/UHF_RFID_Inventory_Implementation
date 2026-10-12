@@ -51,7 +51,7 @@ const Main = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>{menuItem?.title ? `${menuItem.title} | CVS RFID Inventory` : 'CVS RFID Inventory'}</title>
+        <title>{menuItem?.title ? `${menuItem.title} | CoreVista RFID Inventory` : 'CoreVista RFID Inventory'}</title>
       </Helmet>
 
       <Sidebar />
